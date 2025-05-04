@@ -17,7 +17,29 @@ connectCloudinary();
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// app.use(cors());
+
+// ✅ CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173", // local frontend dev
+  "http://localhost:5174", // local admin dev (optional)
+  "https://doctor-appointment-booking-system-gamma.vercel.app/", // deployed frontend
+  "https://doctor-admin-dashboard.vercel.app", // deployed admin dashboard (if any)
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed from this origin"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // api endpoints
 app.use("/api/admin", adminRouter);
