@@ -25,7 +25,7 @@ const allowedOrigins = [
   "http://localhost:5173", // local frontend dev
   "http://localhost:5174", // local admin dev (optional)
   "https://doctor-appointment-booking-system-gamma.vercel.app", // deployed frontend
-  "https://doctor-appointment-booking-system-r2sg.vercel.app", // deployed admin dashboard (if any)
+  "https://doctor-appointment-booking-system-xrmt.vercel.app", // deployed admin dashboard (if any)
 ];
 
 app.use(
